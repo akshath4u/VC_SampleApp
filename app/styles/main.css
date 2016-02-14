@@ -1,0 +1,99 @@
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 60px;
+}
+
+.hero-unit h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+.custom-group{
+        margin-top: 9px;
+        float: left;
+        padding-right: 5px;
+}
+.custom-badge-text{
+    margin-right: 5px;
+    margin-bottom: 5px;
+    /*margin-left: 5px;*/
+    border-radius: 27px !important;
+}
+.text-box{
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #3038B3;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 2px;
+    background-color: rgba(255,255,255, 0.84);
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+}
+.dotted{
+ border-bottom:1px dotted; 
+}
+
+.form-group.form-group-sm {
+    padding-bottom: 3px;
+    margin: 10px 0 0 0 !important;
+}
+
+.form-group.label-floating label.control-label,
+.form-group.label-placeholder label.control-label {
+    top: -26px !important;
+}
+
+.b-none {
+      border: none !important;
+}
+
+.custom-input{
+       margin: -20px 0 0 0 !important;
+}
+
+.btn-circle {
+    width: 31px;
+    height: 32px;
+    min-width: 32px;
+}
+
+.btn-circle span {
+    /* line-height: 56px; */
+}
+
+.btn.btn-circle {
+    padding: 0px;
+    border-radius: 50%;
+}
+
+.btn-default, .dropdown-toggle.btn-default {
+    background-color: #ffffff;
+}
+
+.btn-raised {
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+
