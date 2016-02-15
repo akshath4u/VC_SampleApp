@@ -1,4 +1,4 @@
-// Generated on 2016-02-09 using generator-angular-ui-router 0.5.3
+// Generated on 2015-10-09 using generator-angular-ui-router 0.5.3
 'use strict';
 
 // # Globbing
@@ -10,12 +10,19 @@
 module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
+   //require('wiredep')(grunt);
 
   grunt.initConfig({
     yeoman: {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
+    },
+    wiredep: {
+
+          target: {
+            src: ['app/index.html'] // point to your HTML file.
+          }
     },
     watch: {
       coffee: {
@@ -55,7 +62,7 @@ module.exports = function (grunt) {
     },
     connect: {
       options: {
-        port: 9000,
+        port: 9002,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
         livereload: 35729
@@ -237,6 +244,30 @@ module.exports = function (grunt) {
           src: [
             'generated/*'
           ]
+      },{
+            expand: true,
+            flatten: true,
+            cwd: '<%= yeoman.app %>/',
+            src: ['fonts/*.*'],
+            dest: 'dist/fonts'
+        }, {
+            expand: true,
+            flatten: true,
+            cwd: '<%= yeoman.app %>/fonts',
+            src: ['shadowsintolight/*.*'],
+            dest: 'dist/fonts/shadowsintolight'
+        }, {
+            expand: true,
+            flatten: true,
+            cwd: '<%= yeoman.app %>/fonts',
+            src: ['weather-icons/*.*'],
+            dest: 'dist/fonts/weather-icons'
+        }, {
+            expand: true,
+            flatten: true,
+            cwd: '<%= yeoman.app %>/fonts',
+            src: ['roboto/*.*'],
+            dest: 'dist/fonts/roboto'
         }]
       },
       styles: {
@@ -246,6 +277,45 @@ module.exports = function (grunt) {
         src: '{,*/}*.css'
       }
     },
+    protractor_webdriver: {
+        start: {
+            options: {
+                path: 'node_modules/protractor/bin/',
+                command: 'webdriver-manager start'
+            }
+        }
+    },
+    protractor: {
+        options: {
+              configFile: 'test/protractor.conf.js', //your protractor config file
+              keepAlive: true, // If false, the grunt process stops when the test fails.
+              noColor: false, // If true, protractor will not use colors in its output.
+              args: {
+                  // Arguments passed to the command
+              }
+          },
+        chrome: {
+            options: {
+                  args: {
+                      browser: 'chrome'
+                  }
+              }
+        },
+        safari: {
+            options: {
+                args: {
+                    browser: 'safari'
+                }
+            }
+        },
+        firefox: {
+            options: {
+                args: {
+                    browser: 'firefox'
+                }
+            }
+        }
+    } ,
     concurrent: {
       server: [
         'coffee:dist',
@@ -265,8 +335,8 @@ module.exports = function (grunt) {
     },
     karma: {
       unit: {
-        configFile: 'karma.conf.js',
-        singleRun: true
+        configFile: 'test/karma.conf.js',
+        singleRun: false
       }
     },
     cdnify: {
@@ -274,7 +344,7 @@ module.exports = function (grunt) {
         html: ['<%= yeoman.dist %>/*.html']
       }
     },
-    ngmin: {
+    ngAnnotate: {
       dist: {
         files: [{
           expand: true,
@@ -294,7 +364,8 @@ module.exports = function (grunt) {
       }
     }
   });
-
+  
+  grunt.loadNpmTasks('grunt-karma');
   grunt.registerTask('server', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -316,6 +387,11 @@ module.exports = function (grunt) {
     'connect:test',
     'karma'
   ]);
+  /*for running protractor e2e testing*/
+   grunt.registerTask('e2e', [
+    'protractor_webdriver',
+    'protractor:run'
+  ]);
 
   grunt.registerTask('build', [
     'clean:dist',
@@ -325,7 +401,7 @@ module.exports = function (grunt) {
     'concat',
     'copy:dist',
     'cdnify',
-    'ngmin',
+    'ngAnnotate:dist',
     'cssmin',
     'uglify',
     'rev',
@@ -335,6 +411,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'jshint',
     'test',
-    'build'
+    'build',
+    'wiredep'
   ]);
 };
